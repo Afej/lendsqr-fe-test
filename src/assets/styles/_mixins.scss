@@ -1,0 +1,22 @@
+@use 'variables' as *;
+
+@mixin media-query($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin input-reset {
+  border: none;
+  outline: none;
+  background: none;
+  font-family: inherit;
+}
