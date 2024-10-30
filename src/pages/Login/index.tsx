@@ -3,6 +3,8 @@ import { z } from 'zod'
 import { loginSchema, type LoginFormData } from '@/types/auth'
 import { Input } from '@/components/common/Input'
 import { useLogin } from '@/hooks/useLogin'
+import { MOCK_USER } from '@/constants'
+
 import './login.scss'
 
 import logo from '@/assets/images/logo.svg'
@@ -69,6 +71,11 @@ const Login = () => {
         <form className='login-form' onSubmit={handleSubmit}>
           <h1>Welcome!</h1>
           <p>Enter details to login.</p>
+
+          <div className='login-mock-details'>
+            <p>{`Email : ${MOCK_USER.email}`}</p>
+            <p>{`Password : ${MOCK_USER.password}`}</p>
+          </div>
 
           <div className='login-input-group'>
             <Input

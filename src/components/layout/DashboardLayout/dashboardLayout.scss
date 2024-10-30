@@ -1,0 +1,39 @@
+.dashboard {
+  &-layout {
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  &-main {
+    flex: 1;
+    margin-left: 0;
+    min-height: 100vh;
+    background-color: rgba($secondary-color, 0.02);
+  }
+
+  &-content {
+    padding: 2rem;
+    overflow-y: auto;
+    min-height: 100vh;
+    margin-left: 0;
+
+    @include media-query('lg') {
+      margin-left: 280px;
+    }
+  }
+
+  &-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba($secondary-color, 0.5);
+    display: none;
+
+    &.active {
+      display: block;
+
+      @include media-query('lg') {
+        display: none;
+      }
+    }
+  }
+}

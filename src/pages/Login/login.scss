@@ -71,7 +71,7 @@
 
     p {
       color: $secondary-color;
-      margin-bottom: 2.5rem;
+      // margin-bottom: 2.5rem;
     }
   }
 
@@ -89,5 +89,12 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  &-mock-details {
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
   }
 }

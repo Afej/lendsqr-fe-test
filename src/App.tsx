@@ -13,7 +13,7 @@ import DashboardHome from './pages/Dashboard/Home'
 import Users from './pages/Dashboard/Users'
 import UserDetails from './pages/Dashboard/UserDetails'
 
-import DashboardLayout from '@/components/layouts/Dashboard'
+import DashboardLayout from '@/components/layout/DashboardLayout'
 
 // Protected Route Component
 const ProtectedRoute = () => {
@@ -37,8 +37,10 @@ function App() {
         {/* Protected Dashboard Routes */}
         <Route element={<ProtectedRoute />}>
           <Route path='/dashboard' element={<DashboardLayout />}>
+            <Route index element={<Navigate to='/dashboard/home' replace />} />
+
             {/* Dashboard Home */}
-            <Route index element={<DashboardHome />} />
+            <Route path='home' element={<DashboardHome />} />
 
             {/* Users Section */}
             <Route path='users'>
