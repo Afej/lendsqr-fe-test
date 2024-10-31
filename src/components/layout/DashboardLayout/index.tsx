@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 
-import './dashboardLayout.scss'
+import styles from './dashboardLayout.module.scss'
 import DashboardSidebar from '@/components/layout/DashboardSidebar/Sidebar'
 import DashboardHeader from '@/components/layout/DashboardHeader/Header'
 
@@ -12,19 +12,21 @@ const DashboardLayout = () => {
   const closeSidebar = () => setIsSidebarOpen(false)
 
   return (
-    <div className='dashboard-layout'>
+    <div className={styles['dashboard-layout']}>
       <DashboardHeader toggleSidebar={toggleSidebar} />
 
-      <main className='dashboard-main'>
+      <main className={styles['dashboard-main']}>
         <DashboardSidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
 
-        <div className='dashboard-content'>
+        <div className={styles['dashboard-content']}>
           <Outlet />
         </div>
       </main>
 
       <div
-        className={`dashboard-overlay ${isSidebarOpen ? 'active' : ''}`}
+        className={`${styles['dashboard-overlay']} ${
+          isSidebarOpen ? styles['active'] : ''
+        }`}
         onClick={closeSidebar}
       />
     </div>

@@ -5,7 +5,7 @@ import { Input } from '@/components/common/Input'
 import { useLogin } from '@/hooks/useLogin'
 import { MOCK_USER } from '@/constants'
 
-import './login.scss'
+import styles from './login.module.scss'
 
 import logo from '@/assets/images/logo.svg'
 import loginHero from '@/assets/images/login-hero.png'
@@ -52,32 +52,32 @@ const Login = () => {
   }
 
   return (
-    <main className='login-container'>
-      <div className='login-hero'>
-        <div className='login-logo'>
+    <main className={styles['login-container']}>
+      <div className={styles['login-hero']}>
+        <div className={styles['login-logo']}>
           <img src={logo} alt='Lendsqr logo' />
         </div>
 
-        <div className='login-illustration'>
+        <div className={styles['login-illustration']}>
           <img src={loginHero} alt='Welcome illustration' />
         </div>
       </div>
 
-      <div className='login-form-container'>
-        <div className='login-logo'>
+      <div className={styles['login-form-container']}>
+        <div className={styles['login-logo']}>
           <img src={logo} alt='Lendsqr logo' />
         </div>
 
-        <form className='login-form' onSubmit={handleSubmit}>
+        <form className={styles['login-form']} onSubmit={handleSubmit}>
           <h1>Welcome!</h1>
           <p>Enter details to login.</p>
 
-          <div className='login-mock-details'>
+          <div className={styles['login-mock-details']}>
             <p>{`Email : ${MOCK_USER.email}`}</p>
             <p>{`Password : ${MOCK_USER.password}`}</p>
           </div>
 
-          <div className='login-input-group'>
+          <div className={styles['login-input-group']}>
             <Input
               type='email'
               name='email'
@@ -88,7 +88,7 @@ const Login = () => {
             />
           </div>
 
-          <div className='login-input-group'>
+          <div className={styles['login-input-group']}>
             <Input
               type='password'
               name='password'
@@ -99,7 +99,7 @@ const Login = () => {
             />
           </div>
 
-          <a href='#' className='login-forgot-password'>
+          <a href='#' className={styles['login-forgot-password']}>
             FORGOT PASSWORD?
           </a>
 

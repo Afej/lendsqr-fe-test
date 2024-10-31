@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './input.scss'
+import styles from './input.module.scss'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string
@@ -10,37 +10,39 @@ export const Input: React.FC<InputProps> = ({
   label,
   error,
   type = 'text',
+  className,
   ...props
 }) => {
   const [showPassword, setShowPassword] = useState(false)
-
   const isPassword = type === 'password'
 
+  const inputClassName = [styles.input, error && styles.error, className]
+    .filter(Boolean)
+    .join(' ')
+
   return (
-    <div className='input-container'>
+    <div className={styles.inputContainer}>
       {label && <label>{label}</label>}
+
       {isPassword ? (
-        <div className='password-input-wrapper'>
+        <div className={styles.passwordInputWrapper}>
           <input
             {...props}
             type={showPassword ? 'text' : 'password'}
-            className={`input ${error ? 'error' : ''}`}
+            className={inputClassName}
           />
           <button
             type='button'
-            className='show-password'
+            className={styles.showPassword}
             onClick={() => setShowPassword(!showPassword)}>
             {showPassword ? 'Hide' : 'Show'}
           </button>
         </div>
       ) : (
-        <input
-          {...props}
-          type={type}
-          className={`input ${error ? 'error' : ''}`}
-        />
+        <input {...props} type={type} className={inputClassName} />
       )}
-      {error && <span className='error-message'>{error}</span>}
+
+      {error && <span className={styles.errorMessage}>{error}</span>}
     </div>
   )
 }

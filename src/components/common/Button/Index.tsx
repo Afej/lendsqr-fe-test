@@ -1,5 +1,5 @@
 import React from 'react'
-import './button.scss'
+import styles from './button.module.scss'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'outline'
@@ -18,9 +18,9 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const buttonClasses = [
-    'button',
-    variant,
-    isLoading ? 'loading' : '',
+    styles.button,
+    styles[variant],
+    isLoading ? styles.loading : '',
     className,
   ]
     .filter(Boolean)
@@ -37,8 +37,9 @@ export const Button: React.FC<ButtonProps> = ({
       style={buttonStyle}
       disabled={isLoading || disabled}
       {...props}>
-      <span className='button-text'>{children}</span>
-      {isLoading && <span className='spinner' />}
+      {!isLoading && <span>{children}</span>}
+
+      {isLoading && <span className={styles['spinner']} />}
     </button>
   )
 }

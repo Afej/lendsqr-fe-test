@@ -1,7 +1,7 @@
 import React from 'react'
 import { Menu } from 'lucide-react'
 import { Input } from '@/components/common/Input'
-import './header.scss'
+import styles from './header.module.scss'
 
 import search from '@/assets/images/search.png'
 import logo from '@/assets/images/logo.svg'
@@ -15,47 +15,47 @@ type HeaderProps = {
 
 const DashboardHeader = ({ toggleSidebar }: HeaderProps) => {
   return (
-    <header className='header'>
-      <div className='header-left'>
-        <button className='menu-trigger' onClick={toggleSidebar}>
+    <header className={styles['header']}>
+      <div className={styles['header-left']}>
+        <button className={styles['menu-trigger']} onClick={toggleSidebar}>
           <Menu />
         </button>
 
-        <div className='header-logo'>
+        <div className={styles['header-logo']}>
           <img src={logo} alt='Lendsqr logo' />
         </div>
 
-        <div className='header-search'>
+        <div className={styles['header-search']}>
           <Input type='text' placeholder='Search for anything' />
 
-          <div className='header-search-icon'>
+          <div className={styles['header-search-icon']}>
             <img src={search} alt='search icon' />
           </div>
         </div>
       </div>
 
-      <div className='header-right'>
-        <p className='header-text'>Docs</p>
+      <div className={styles['header-right']}>
+        <p className={styles['header-text']}>Docs</p>
 
-        <div className='header-notifications'>
+        <div className={styles['header-notifications']}>
           <img src={notification_icon} alt='notification_icon' />
         </div>
 
-        <div className='header-user'>
+        <div className={styles['header-user']}>
           <div className=''>
             <img
               src={avatar_icon}
               alt='avatar_icon'
-              className='header-user-avatar'
+              className={styles['header-user-avatar']}
             />
           </div>
 
-          <p className='header-user-name'>Admin</p>
+          <p className={styles['header-user-name']}>Admin</p>
 
           <img
             src={dropdown_icon}
             alt='dropdown_icon'
-            className='dropdown-icon'
+            className={styles['dropdown-icon']}
           />
         </div>
       </div>

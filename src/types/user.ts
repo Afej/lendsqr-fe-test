@@ -1,22 +1,31 @@
 export interface User {
-  id: string
-  fullName: string
+  organization: string
+  username: string
   email: string
   phoneNumber: string
-  organization: string
-  status: 'active' | 'inactive' | 'blacklisted' | 'pending'
   dateJoined: string
-  tier: number
-  bvn: string
-  gender: string
-  maritalStatus: string
-  children: string
-  typeOfResidence: string
+  status: 'active' | 'inactive' | 'pending' | 'blacklisted'
+}
+
+export interface UserDetails extends User {
+  id: string
+  tier: string
+  balance: number
+  personalInfo: {
+    fullName: string
+    gender: string
+    maritalStatus: string
+    children: string
+    typeOfResidence: string
+  }
   education: {
     level: string
     employmentStatus: string
     sector: string
     duration: string
+    officeEmail: string
+    monthlyIncome: string
+    loanRepayment: string
   }
   socials: {
     twitter: string
@@ -28,5 +37,5 @@ export interface User {
     phoneNumber: string
     email: string
     relationship: string
-  }
+  }[]
 }
