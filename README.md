@@ -1,50 +1,51 @@
-# React + TypeScript + Vite
+# LENDSQR FRONTEND ENGINEERING TEST
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a project created for the Lendsqr-Frontend test interview.
 
-Currently, two official plugins are available:
+Setup Instructions
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clone the Repository:
+   git clone <https://github.com/Afej/lendsqr-fe-test.git>
 
-## Expanding the ESLint configuration
+2. Install Dependencies:
+   Make sure you have Node.js and npm/yarn installed. Then run: npm install
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+3. Run the Development Server:
+   npm run dev
 
-- Configure the top-level `parserOptions` property like this:
+This will start the development server at http://localhost:5173.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## HOW TO TEST
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. The index page redirects to the login page.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+   The login page is the entry point to the app. Users need to enter valid credentials to access the dashboard.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   Mock details below and on the login page:
+
+   ```
+   Username: lendsqr@gmail.com
+   Password: password123
+   ```
+
+2. After successful login, the user is redirected to the dashboard.
+
+   The dashboard has only 1 active path (users) so that is set as the index path for all dashboard routes for testing purposes.
+   You can simply configure the dashboard routes in the App.tsx file.
+   Dashboard routes are also protected.
+
+3. On the users page, you can see a list of users fetched from the Mock API.
+
+   The users data is saved to local storage to easily retrieve user details on the user details page.
+
+   To view a user's details, click on the "Options" button and view details option which navigates to the user details page.
+
+### Technologies Used
+
+1. React(Vite)
+2. Typescript
+3. SCSS for styling
+4. React Router Dom for Routing
+5. React Query
+6. Zod for form validation
+7. React paginate & React-Spinners for pagination and loading state.
