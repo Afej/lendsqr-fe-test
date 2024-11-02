@@ -1,10 +1,12 @@
 export interface User {
   id: string
   organization: string
-  userName: string
+  username: string
+  firstName: string
+  lastName: string
   email: string
   phoneNumber: string
-  date: string
+  dateJoined: string
   status: 'Active' | 'Inactive' | 'Pending' | 'Blacklisted'
 }
 
@@ -13,8 +15,8 @@ export interface UserDetails extends User {
     fullName: string
     phoneNumber: string
     emailAddress: string
-    bvn: string
-    gender: 'Male' | 'Female' | 'Non-binary' | 'Prefer not to say'
+    bvn: number
+    gender: 'Male' | 'Female' | 'Others'
     maritalStatus: 'Single' | 'Married' | 'Divorced' | 'Widowed'
     children: number
     typeOfResidence: 'Apartment' | 'House' | 'Condo' | 'Shared' | 'Dormitory'
@@ -38,7 +40,7 @@ export interface UserDetails extends User {
     monthlyIncomeRange: string
     loanRepayment: string
   }
-  tier: string
+  tier: number
   bankDetails: {
     bankName: string
     accountBalance: string // You can use 'number' if you want to represent it as a numerical value

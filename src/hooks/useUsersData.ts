@@ -10,7 +10,7 @@ const getUsers = async (): Promise<UserDetails[]> => {
   }
   // Fetch from API and store in localStorage
   const response = await fetch(
-    'https://api.jsonsilo.com/public/be765ece-d0ff-4df1-a498-ba9183037b93'
+    'https://api.jsonsilo.com/public/03ab422c-be7b-44f2-baed-0bfd847b26ae'
   )
   const users = await response.json()
   localStorage.setItem(STORAGE_KEY, JSON.stringify(users))

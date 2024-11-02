@@ -19,8 +19,29 @@ export const shortDateFormat = (dateString: string) => {
   })
 }
 
+// export const shortDateTimeFormat = (dateString: string) => {
+//   return new Date(dateString).toLocaleString('en-US', {
+//     year: 'numeric',
+//     month: 'short',
+//     day: '2-digit',
+//     hour: 'numeric',
+//     minute: '2-digit',
+//     hour12: true,
+//   })
+// }
+
 export const shortDateTimeFormat = (dateString: string) => {
-  return new Date(dateString).toLocaleString('en-US', {
+  // Remove space before timezone offset if it exists
+  const normalizedDate = dateString.replace(/\s(?=[-+]\d{2}:?\d{2}$)/, '')
+
+  const date = new Date(normalizedDate)
+
+  // Check if date is valid
+  if (isNaN(date.getTime())) {
+    throw new Error('Invalid date string provided')
+  }
+
+  return date.toLocaleString('en-US', {
     year: 'numeric',
     month: 'short',
     day: '2-digit',

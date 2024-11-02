@@ -113,14 +113,15 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
             <th></th>
           </tr>
         </thead>
+
         <tbody>
           {users.map((user, index) => (
             <tr key={index}>
               <td>{user.organization}</td>
-              <td>{user.userName}</td>
+              <td>{user.username}</td>
               <td>{user.email}</td>
               <td>{user.phoneNumber}</td>
-              <td>{shortDateTimeFormat(user.date)}</td>
+              <td>{shortDateTimeFormat(user.dateJoined)}</td>
               <td>
                 <div className={styles[`${user.status.toLowerCase()}`]}>
                   {user.status}

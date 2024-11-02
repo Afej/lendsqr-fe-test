@@ -39,9 +39,6 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
               value={filterValues.organization}
               onChange={(e) => onFilterChange('organization', e.target.value)}>
               <option value=''>Select</option>
-              <option value='lendsqr'>Lendsqr</option>
-              <option value='irorun'>Irorun</option>
-              <option value='lendstar'>Lendstar</option>
             </select>
           </div>
 
