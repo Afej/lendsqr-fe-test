@@ -12,12 +12,13 @@
   }
 
   &-content {
-    padding: 2rem;
+    padding: 1.5rem;
     overflow-y: auto;
     min-height: 100vh;
     margin-left: 0;
 
     @include media-query('lg') {
+      padding: 3.5rem;
       margin-left: 280px;
     }
   }

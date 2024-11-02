@@ -9,7 +9,7 @@ import { useAuth } from './context/AuthContext'
 
 // Pages
 import Login from './pages/Login'
-import DashboardHome from './pages/Dashboard/Home'
+// import DashboardHome from './pages/Dashboard/Home'
 import Users from './pages/Dashboard/Users'
 import UserDetails from './pages/Dashboard/UserDetails'
 
@@ -37,15 +37,15 @@ function App() {
         {/* Protected Dashboard Routes */}
         <Route element={<ProtectedRoute />}>
           <Route path='/dashboard' element={<DashboardLayout />}>
-            <Route index element={<Navigate to='/dashboard/home' replace />} />
+            <Route index element={<Navigate to='/dashboard/users' replace />} />
 
             {/* Dashboard Home */}
-            <Route path='home' element={<DashboardHome />} />
+            {/* <Route path='home' element={<DashboardHome />} /> */}
 
             {/* Users Section */}
             <Route path='users'>
               <Route index element={<Users />} />
-              <Route path=':id' element={<UserDetails />} />
+              <Route path=':userId' element={<UserDetails />} />
             </Route>
 
             {/* Redirect /dashboard/* to /dashboard */}

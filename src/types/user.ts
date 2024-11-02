@@ -1,41 +1,58 @@
 export interface User {
+  id: string
   organization: string
-  username: string
+  userName: string
   email: string
   phoneNumber: string
   dateJoined: string
-  status: 'active' | 'inactive' | 'pending' | 'blacklisted'
+  status: 'Active' | 'Inactive' | 'Pending' | 'Blacklisted'
 }
 
 export interface UserDetails extends User {
-  id: string
-  tier: string
-  balance: number
-  personalInfo: {
+  personalInformation: {
     fullName: string
-    gender: string
-    maritalStatus: string
-    children: string
-    typeOfResidence: string
+    phoneNumber: string
+    emailAddress: string
+    bvn: string
+    gender: 'Male' | 'Female' | 'Non-binary' | 'Prefer not to say'
+    maritalStatus: 'Single' | 'Married' | 'Divorced' | 'Widowed'
+    children: number
+    typeOfResidence: 'Apartment' | 'House' | 'Condo' | 'Shared' | 'Dormitory'
   }
-  education: {
-    level: string
-    employmentStatus: string
-    sector: string
-    duration: string
+  educationEmployment: {
+    levelOfEducation:
+      | 'High School'
+      | 'Associate'
+      | 'Bachelor'
+      | 'Master'
+      | 'PhD'
+    employmentStatus: 'Employed' | 'Unemployed' | 'Self-employed' | 'Student'
+    sectorOfEmployment:
+      | 'Technology'
+      | 'Finance'
+      | 'Healthcare'
+      | 'Education'
+      | 'Retail'
+    durationOfEmployment: string
     officeEmail: string
-    monthlyIncome: string
+    monthlyIncomeRange: string
     loanRepayment: string
   }
+  tier: string
+  bankDetails: {
+    bankName: string
+    accountBalance: string // You can use 'number' if you want to represent it as a numerical value
+    accountNumber: string // Use 'string' to accommodate leading zeros or specific formatting
+  }
   socials: {
-    twitter: string
     facebook: string
-    instagram: string
+    twitter: string
+    linkedin: string
   }
   guarantor: {
     fullName: string
+    relationship: 'Friend' | 'Family' | 'Colleague' | 'Other'
     phoneNumber: string
     email: string
-    relationship: string
-  }[]
+  }
 }
