@@ -4,6 +4,7 @@ import {
   Route,
   Navigate,
   Outlet,
+  useLocation,
 } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
 
@@ -14,6 +15,7 @@ import Users from './pages/Dashboard/Users'
 import UserDetails from './pages/Dashboard/UserDetails'
 
 import DashboardLayout from '@/components/layout/DashboardLayout'
+import { useEffect } from 'react'
 
 // Protected Route Component
 const ProtectedRoute = () => {
@@ -26,9 +28,20 @@ const ProtectedRoute = () => {
   return <Outlet />
 }
 
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
+
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         {/* Public Routes */}
         <Route path='/' element={<Navigate to='/login' replace />} />

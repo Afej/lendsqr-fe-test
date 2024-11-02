@@ -1,31 +1,51 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useOutsideClick } from '@/hooks/useClickOutside'
-
-import { User, UserDetails } from '@/types/user'
+import { UserDetails } from '@/types/user'
 import styles from './userTable.module.scss'
+import { FilterPanel } from '../FilterPanel'
 
 import FilterIcon from '@/assets/images/filter-dropdown-icon.png'
 import OptionsIcon from '@/assets/images/options-icon.png'
 import ViewIcon from '@/assets/images/view-icon.png'
 import ActivateIcon from '@/assets/images/activate-icon.png'
 import BlacklistIcon from '@/assets/images/blacklist-icon.png'
+import { shortDateTimeFormat } from '@/utils'
 
 interface UserTableProps {
   users: UserDetails[]
+}
+
+interface FilterValues {
+  organization: string
+  username: string
+  email: string
+  date: string
+  phoneNumber: string
+  status: string
 }
 
 const UserTable: React.FC<UserTableProps> = ({ users }) => {
   const navigate = useNavigate()
   const [filterOpen, setFilterOpen] = useState(false)
   const [popoverOpen, setPopoverOpen] = useState<number | null>(null)
+  const [filterValues, setFilterValues] = useState<FilterValues>({
+    organization: '',
+    username: '',
+    email: '',
+    date: '',
+    phoneNumber: '',
+    status: '',
+  })
 
   const toggleFilter = () => {
     setFilterOpen(!filterOpen)
+    setPopoverOpen(null)
   }
 
   const togglePopover = (index: number) => {
     setPopoverOpen(index === popoverOpen ? null : index)
+    setFilterOpen(false)
   }
 
   const handleOutsideClick = () => {
@@ -33,7 +53,29 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
     setPopoverOpen(null)
   }
 
-  const viewUser = (user: User) => {
+  const handleFilterChange = (field: keyof FilterValues, value: string) => {
+    setFilterValues((prev) => ({
+      ...prev,
+      [field]: value,
+    }))
+  }
+
+  const handleFilterSubmit = () => {
+    setFilterOpen(false)
+  }
+
+  const handleFilterReset = () => {
+    setFilterValues({
+      organization: '',
+      username: '',
+      email: '',
+      date: '',
+      phoneNumber: '',
+      status: '',
+    })
+  }
+
+  const viewUser = (user: UserDetails) => {
     navigate(`/dashboard/users/${user.id}`)
   }
   const blacklistUser = () => {}
@@ -59,11 +101,11 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
               <th key={index}>
                 <div className={styles.filterHeader}>
                   {header}
-
                   <img
                     className={styles.filterIcon}
                     src={FilterIcon}
-                    onClick={() => toggleFilter()}
+                    alt='filter'
+                    onClick={toggleFilter}
                   />
                 </div>
               </th>
@@ -78,19 +120,18 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
               <td>{user.userName}</td>
               <td>{user.email}</td>
               <td>{user.phoneNumber}</td>
-              <td>{user.dateJoined}</td>
+              <td>{shortDateTimeFormat(user.date)}</td>
               <td>
                 <div className={styles[`${user.status.toLowerCase()}`]}>
                   {user.status}
                 </div>
               </td>
-
               <td>
-                <div
-                  className={styles.moreOptions}
-                  onClick={() => togglePopover(index)}>
-                  <div className={styles.moreOptionsIcon}>
-                    <img src={OptionsIcon} />
+                <div className={styles.moreOptions}>
+                  <div
+                    className={styles.moreOptionsIcon}
+                    onClick={() => togglePopover(index)}>
+                    <img src={OptionsIcon} alt='options' />
                   </div>
 
                   {popoverOpen === index && (
@@ -115,6 +156,16 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
           ))}
         </tbody>
       </table>
+
+      {filterOpen && (
+        <FilterPanel
+          isOpen={filterOpen}
+          filterValues={filterValues}
+          onFilterChange={handleFilterChange}
+          onFilterSubmit={handleFilterSubmit}
+          onFilterReset={handleFilterReset}
+        />
+      )}
     </div>
   )
 }

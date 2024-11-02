@@ -5,10 +5,10 @@
   border: 1px solid rgba(33, 63, 125, 0.06);
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
   border-radius: 4px;
-  padding: 0 15px 15px;
+  padding: 10px 15px 35px;
 
   @include media-query('lg') {
-    padding: 0px 30px 30px;
+    padding: 10px 30px 50px;
   }
 }
 
@@ -22,13 +22,9 @@
   }
 
   td {
-    padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-
-    @include media-query('lg') {
-      padding: 15px 15px 15px 0;
-    }
+    padding: 15px 15px 15px 0;
   }
 
   th {
@@ -54,6 +50,7 @@
   display: inline-flex;
   align-items: center;
   text-transform: uppercase;
+  // width: max-content;
 }
 
 @mixin statusPill {

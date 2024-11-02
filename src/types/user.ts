@@ -4,7 +4,7 @@ export interface User {
   userName: string
   email: string
   phoneNumber: string
-  dateJoined: string
+  date: string
   status: 'Active' | 'Inactive' | 'Pending' | 'Blacklisted'
 }
 

@@ -37,14 +37,18 @@ const Users = () => {
 
       {/* users stats */}
       <section className={styles.cardContainer}>
-        {usersCardStats.map(({ title, value, icon }) => (
+        {usersCardStats.map(({ title, key, value, icon }) => (
           <div className={styles.card} key={title}>
             <div className={styles.cardIcon}>
               <img src={icon} alt={title} />
             </div>
             <div className={styles.cardContent}>
               <p className={styles.cardTitle}>{title}</p>
-              <p className={styles.cardValue}>{value}</p>
+              <p className={styles.cardValue}>
+                {key === 'users' && usersData?.length
+                  ? usersData.length
+                  : value}
+              </p>
             </div>
           </div>
         ))}
