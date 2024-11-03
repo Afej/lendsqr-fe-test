@@ -33,6 +33,7 @@ const UserDetailsPage = () => {
           key={index}
           size={16}
           className={index < filled ? styles.starFilled : styles.starEmpty}
+          style={{ fill: index < filled ? '#E9B200' : '' }}
         />
       ))
   }
@@ -107,7 +108,9 @@ const UserDetailsPage = () => {
               </div>
               <div className={styles.userTier}>
                 <span>User's Tier</span>
-                <div className={styles.stars}>{renderStarRating(1)}</div>
+                <div className={styles.stars}>
+                  {renderStarRating(user.tier)}
+                </div>
               </div>
               <div className={styles.accountInfo}>
                 <p>{user.bankDetails.accountBalance}</p>

@@ -1,16 +1,17 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useOutsideClick } from '@/hooks/useClickOutside'
+import { shortDateTimeFormat } from '@/utils'
 import { UserDetails } from '@/types/user'
-import styles from './userTable.module.scss'
 import { FilterPanel } from '../FilterPanel'
+
+import styles from './userTable.module.scss'
 
 import FilterIcon from '@/assets/images/filter-dropdown-icon.png'
 import OptionsIcon from '@/assets/images/options-icon.png'
 import ViewIcon from '@/assets/images/view-icon.png'
 import ActivateIcon from '@/assets/images/activate-icon.png'
 import BlacklistIcon from '@/assets/images/blacklist-icon.png'
-import { shortDateTimeFormat } from '@/utils'
 
 interface UserTableProps {
   users: UserDetails[]

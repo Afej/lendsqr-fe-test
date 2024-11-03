@@ -1,11 +1,11 @@
 import { useMemo, useState } from 'react'
 import { usersCardStats } from '@/constants/userCardStats'
-import styles from './users.module.scss'
 import UserTable from '@/components/Users/UserTable'
 import Pagination from '@/components/Pagination'
-
 import { useUsersData } from '@/hooks/useUsersData'
 import Loader from '@/components/common/Loader'
+
+import styles from './users.module.scss'
 
 const Users = () => {
   const { data: usersData, isLoading } = useUsersData()
@@ -50,8 +50,8 @@ const Users = () => {
         ))}
       </section>
 
+      {/* users table */}
       <section>
-        {/* users table */}
         {isLoading ? (
           <>
             <Loader />

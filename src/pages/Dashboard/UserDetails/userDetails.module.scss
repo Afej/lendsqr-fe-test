@@ -117,6 +117,14 @@
       @include media-query('lg') {
         justify-content: flex-start;
       }
+
+      .starFilled {
+        color: $warning-color;
+      }
+
+      .starEmpty {
+        color: rgba($warning-color, 0.3);
+      }
     }
   }
 

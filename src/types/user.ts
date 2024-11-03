@@ -43,8 +43,8 @@ export interface UserDetails extends User {
   tier: number
   bankDetails: {
     bankName: string
-    accountBalance: string // You can use 'number' if you want to represent it as a numerical value
-    accountNumber: string // Use 'string' to accommodate leading zeros or specific formatting
+    accountBalance: string
+    accountNumber: string
   }
   socials: {
     facebook: string
