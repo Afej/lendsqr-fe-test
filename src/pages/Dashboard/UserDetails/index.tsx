@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import styles from './userDetails.module.scss'
 import { Star } from 'lucide-react'
-import { Button } from '@/components/common/Button/Index'
-
-import ArrowLeft from '@/assets/images/arrow-left.png'
-import Avatar from '@/assets/images/avatar.png'
 import { useUsersData } from '@/hooks/useUsersData'
 import { UserDetails } from '@/types/user'
 import Loader from '@/components/common/Loader'
+import { Button } from '@/components/common/Button/Index'
+import styles from './userDetails.module.scss'
+
+import ArrowLeft from '@/assets/images/arrow-left.png'
+import Avatar from '@/assets/images/avatar.png'
 
 const UserDetailsPage = () => {
   const navigate = useNavigate()

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '@/components/common/Button/Index'
 import { Input } from '@/components/common/Input'
-import styles from './FilterPanel.module.scss'
+import styles from './filterPanel.module.scss'
 
 interface FilterValues {
   organization: string
